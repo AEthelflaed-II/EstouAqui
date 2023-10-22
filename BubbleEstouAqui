@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estou Aqui</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white; /* Set the background to white */
+        }
+
+        /* Primary color for buttons */
+        .primary-button {
+            background-color: #2C2D7F;
+            color: white; /* Text inside buttons is white */
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Default text color */
+        p, label, select, input {
+            color: black; /* Set text color to black */
+        }
+
+        /* Style for form sections */
+        div {
+            margin: 10px 0;
+        }
+
+        /* Center align text */
+        p {
+            text-align: left; /* Set text alignment to left for paragraphs */
+        }
+    </style>
+    <h3><p style="font-size:20px;"><b> Please fill up this form for us to serve you better:</b></p></h3>
+</head>
+<body>
+
+    <div id="countryCitySelection">
+        <p>Select your country:</p>
+        <select id="countrySelect">
+            <option value="usa">USA</option>
+            <option value="spain">Spain</option>
+            <option value="france">France</option>
+        </select>
+        <p>Select your city:</p>
+        <select id="citySelect">
+            <option value="ny">New York</option>
+            <option value="madrid">Madrid</option>
+            <option value="paris">Paris</option>
+        </select>
+        <button class="primary-button" onclick="showGenderSelection()">Next</button>
+    </div>
+
+    <div id="genderSelection" style="display: none;">
+        <p>Select your gender:</p>
+        <select id="genderSelect">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <button class="primary-button" onclick="showAgeInput()">Next</button>
+    </div>
+
+    <div id="ageInput" style="display: none;">
+        <p>Enter your age:</p>
+        <input type="number" id="age" placeholder="Enter your age">
+        <button class="primary-button" onclick="showTravelingWithKidsInput()">Next</button>
+    </div>
+
+    <div id="travelingWithKidsInput" style="display: none;">
+        <p>Are you traveling with kids?</p>
+        <select id="travelingWithKidsSelect">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select>
+        <button class="primary-button" onclick="showServiceSelection()">Next</button>
+    </div>
+
+    <div id="serviceSelection" style="display: none;">
+        <p>Select below the service you need:</p>
+        <input type="radio" id="maps" name="service" value="maps">
+        <label for="maps">Maps</label><br>
+
+        <input type="radio" id="transport" name="service" value="transport">
+        <label for="transport">Transport</label><br>
+
+        <input type="radio" id="accommodation" name="service" value="accommodation">
+        <label for="accommodation">Accommodation</label><br>
+
+        <input type="radio" id="restaurants" name="service" value="restaurants">
+        <label for="restaurants">Restaurants</label><br>
+
+        <input type="radio" id="leisure" name="service" value="leisure">
+        <label for="leisure">Leisure & Events</label><br>
+
+        <input type="radio" id="sos" name="service" value="sos">
+        <label for="sos">SOS (Ajuda)</label><br>
+
+        <input type="radio" id="metaverse" name="service" value="metaverse">
+        <label for="metaverse">Mapa Interativo (MetaVerse)</label><br>
+
+        <button class="primary-button" onclick="openServiceLink()">Next</button>
+    </div>
+
+    <div id="finalPage" style="display: none;">
+        <p>This is the final page. You can add your content here.</p>
+    </div>
+
+    <script>
+        function showGenderSelection() {
+            var countryCitySelection = document.getElementById("countryCitySelection");
+            var genderSelection = document.getElementById("genderSelection");
+            countryCitySelection.style.display = "none";
+            genderSelection.style.display = "block";
+        }
+
+        function showAgeInput() {
+            var genderSelection = document.getElementById("genderSelection");
+            var ageInput = document.getElementById("ageInput");
+            genderSelection.style.display = "none";
+            ageInput.style.display = "block";
+        }
+
+        function showTravelingWithKidsInput() {
+            var ageInput = document.getElementById("ageInput");
+            var travelingWithKidsInput = document.getElementById("travelingWithKidsInput");
+            ageInput.style.display = "none";
+            travelingWithKidsInput.style.display = "block";
+        }
+
+        function showServiceSelection() {
+            var travelingWithKidsInput = document.getElementById("travelingWithKidsInput");
+            var serviceSelection = document.getElementById("serviceSelection");
+            travelingWithKidsInput.style.display = "none";
+            serviceSelection.style.display = "block";
+        }
+
+        function openServiceLink() {
+            var selectedService = document.querySelector('input[name="service"]:checked');
+
+            if (selectedService) {
+                if (selectedService.value === "maps") {
+                    // Open Google Maps in a new tab
+                    window.open("https://maps.google.com", "_blank");
+                } else if (selectedService.value === "accommodation") {
+                    // Open Booking.com in a new tab
+                    window.open("https://www.booking.com", "_blank");
+                } else if (selectedService.value === "transport") {
+                    // Redirect to the specified transport link
+                    window.open("https://moovitapp.com/index/pt-br/transporte_público-Sao_Paulo-242", "_blank");
+                } else if (selectedService.value === "restaurants") {
+                    // Open the specified restaurant link in a new tab
+                    window.open("https://www.tripadvisor.com.br/Restaurants-g303631-Sao_Paulo_State_of_Sao_Paulo.html", "_blank");
+                } else if (selectedService.value === "sos") {
+                    // Redirect to the specified SOS link
+                    window.open("https://www.saopaulo.sp.gov.br/fale-conosco/telefones-uteis/", "_blank");
+                } else if (selectedService.value === "leisure") {
+                    // Redirect to the specified leisure link
+                    window.open("https://www.sampaingressos.com.br", "_blank");
+                } else if (selectedService.value === "metaverse") {
+                    // Redirect to the specified MetaVerse link
+                    window.open("https://www.spatial.io/s/CIT-Sao-Paulo-6533d33193d740a03d86c63e?share=8527080618797948589", "_blank");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
